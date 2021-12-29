@@ -23,7 +23,8 @@ type Employee struct {
 	Active          bool           `json:"active"`
 }
 
-func (e *Employee) Create() error {
+func (e *Employee) Create(id uint) error {
+	e.CompanyID = id
 	if err := database.DB.Model(&e).Create(&e).Error; err != nil {
 		return err
 	}
@@ -32,6 +33,13 @@ func (e *Employee) Create() error {
 
 func (e *Employee) Update() error {
 	if err := database.DB.Model(&e).Updates(&e).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (e *Employee) Delete() error {
+	if err := database.DB.Model(&e).Delete(&e).Error; err != nil {
 		return err
 	}
 	return nil
@@ -59,4 +67,20 @@ func DeactivateEmployee(id uint) error {
 		return err
 	}
 	return nil
+}
+
+func GetEmployeeListByCompanyID(cmpID uint) ([]Employee, error) {
+	eList := []Employee{}
+	if err := database.DB.Model(&Employee{}).Where("company_id = ?", cmpID).Find(&eList).Error; err != nil {
+		return nil, err
+	}
+	return eList, nil
+}
+
+func GetEmployeeByIDAndCompanyID(id uint, cmpID uint) (Employee, error) {
+	e := Employee{}
+	if err := database.DB.Model(&Employee{}).Where("id = ? AND company_id = ?", id, cmpID).Find(&e).Error; err != nil {
+		return Employee{}, err
+	}
+	return e, nil
 }

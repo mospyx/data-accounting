@@ -25,3 +25,17 @@ func (cp *CompanyProfile) Create() error {
 	}
 	return nil
 }
+
+func (cp *CompanyProfile) Update() error {
+	if err := database.DB.Model(&cp).Updates(&cp).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (cp *CompanyProfile) Delete() error {
+	if err := database.DB.Model(&cp).Delete(&cp).Error; err != nil {
+		return err
+	}
+	return nil
+}

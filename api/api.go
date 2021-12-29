@@ -41,17 +41,11 @@ func Start() error {
 			company := companies.Group("/:company_id")
 			{
 				company.GET("", handlers.GetCompany)
-				company.PUT("", handlers.UpdateCompany)
 				company.DELETE("", handlers.DeleteCompany)
-				companyProfiles := company.Group("/company_profile")
+				companyProfile := company.Group("/company_profile")
 				{
-					companyProfiles.GET("", handlers.GetCompanyProfiles)
-					companyProfile := companyProfiles.Group("/:company_profile_id")
-					{
-						companyProfile.GET("", handlers.GetCompanyProfile)
-						companyProfile.PUT("", handlers.UpdateCompanyProfile)
-						companyProfile.DELETE("", handlers.DeleteCompanyProfile)
-					}
+					companyProfile.GET("", handlers.GetCompanyProfile)
+					companyProfile.PUT("", handlers.UpdateCompanyProfile)
 				}
 				employees := company.Group("/employees")
 				employees.GET("", handlers.GetEmployees)
