@@ -22,11 +22,11 @@ func CreateCompany(c *gin.Context) {
 	}
 
 	if err := cmp.Create(); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err})
 		return
 	}
 
-	c.JSON(http.StatusOK, cmp)
+	c.JSON(http.StatusCreated, cmp)
 }
 
 //Company handlers
