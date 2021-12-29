@@ -1,10 +1,15 @@
 package migrate
 
-import "github.com/mospyx/data_accounting/pkg/database"
+import (
+	"github.com/mospyx/data_accounting/pkg/database"
+	"github.com/mospyx/data_accounting/pkg/models"
+)
 
 func AutoMigrate() error {
 	err := database.DB.AutoMigrate(
-	//&struct
+		&models.Company{},
+		&models.CompanyProfile{},
+		&models.Employee{},
 	)
 	if err != nil {
 		return err
