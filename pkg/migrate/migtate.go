@@ -10,6 +10,7 @@ func AutoMigrate() error {
 		&models.Company{},
 		&models.CompanyProfile{},
 		&models.Employee{},
+		&models.User{},
 	)
 	if err != nil {
 		return err

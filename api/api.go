@@ -1,6 +1,7 @@
 package api
 
 import (
+	jwt "github.com/appleboy/gin-jwt/v2"
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -25,13 +26,19 @@ func Start() error {
 		Repanic: true,
 	}))
 	r.Use(cors.New(config))
+	r.Use(gin.Recovery())
+	authMiddleware, err := jwt.New(handlers.JWT)
+	if err != nil {
+		return err
+	}
 
 	api := r.Group("/api")
 	{
 		auth := api.Group("/auth")
 		{
-			auth.POST("/login")
-			auth.POST("/register")
+			auth.POST("/login", authMiddleware.LoginHandler)
+			auth.POST("/register", authMiddleware.MiddlewareFunc(), handlers.Admin(), handlers.Register)
+			auth.GET("/refresh", authMiddleware.RefreshHandler)
 		}
 
 		companies := api.Group("/companies")
@@ -62,8 +69,8 @@ func Start() error {
 		}
 	}
 
-	log.Println("Starting server on port " + serverPort)
-	err := r.Run(serverPort)
+	log.Println("Starting server on port", serverPort)
+	err = r.Run(serverPort)
 	if err != nil {
 		return err
 	}

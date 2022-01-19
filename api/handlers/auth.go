@@ -25,16 +25,19 @@ func initJWT() *jwt.GinJWTMiddleware {
 		PayloadFunc: func(data interface{}) jwt.MapClaims {
 			if v, ok := data.(*models.User); ok {
 				return jwt.MapClaims{
-					"id": v.ID,
+					"id":   v.ID,
+					"role": v.Role,
 				}
 			}
 			return jwt.MapClaims{}
 		},
 		IdentityHandler: func(c *gin.Context) interface{} {
 			claims := jwt.ExtractClaims(c)
-			return &models.User{
-				ID: uint(claims["id"].(float64)),
+			u := &models.User{
+				ID:   uint(claims["id"].(float64)),
+				Role: models.UserRole(claims["role"].(string)),
 			}
+			return u
 		},
 		Authenticator: Login,
 		Authorizator: func(data interface{}, c *gin.Context) bool {
@@ -63,6 +66,7 @@ type LoginHandlerRequest struct {
 
 func Login(c *gin.Context) (interface{}, error) {
 	var user LoginHandlerRequest
+
 	err := c.BindJSON(&user)
 	if err != nil {
 		return nil, err
@@ -150,7 +154,7 @@ func Register(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, usr)
+	c.JSON(http.StatusCreated, usr)
 	return
 }
 
@@ -162,18 +166,6 @@ func Admin() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		claims := jwt.ExtractClaims(c)
 		if role(claims).IsAdmin() {
-			c.Next()
-		} else {
-			c.Status(http.StatusForbidden)
-			return
-		}
-	}
-}
-
-func Authorized() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		claims := jwt.ExtractClaims(c)
-		if role(claims).IsGeneral() || role(claims).IsAdmin() {
 			c.Next()
 		} else {
 			c.Status(http.StatusForbidden)
