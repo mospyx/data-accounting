@@ -2,7 +2,7 @@ const homePage = 'http://localhost:5000/public/index.html'
 
 let FormS = document.querySelector(".form-data");
 
-FormS.addEventListener('submit', function(e) {
+FormS.addEventListener('submit', function (e) {
 
     e.preventDefault();
 
@@ -17,8 +17,7 @@ FormS.addEventListener('submit', function(e) {
         email: formData.email,
         password: formData.password,
     })
-        .then(function(response) {
-            console.log(response.data);
+        .then(function (response) {
             let token = response.data.token;
             localStorage.setItem("jwt", 'Bearer ' + token);
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
