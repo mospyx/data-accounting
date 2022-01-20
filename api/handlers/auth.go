@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"errors"
-	"github.com/mospyx/data_accounting/pkg/models"
+	"github.com/mospyx/data-accounting/pkg/models"
 	"net/http"
 	"os"
 	"regexp"

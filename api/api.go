@@ -5,7 +5,7 @@ import (
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/mospyx/data_accounting/api/handlers"
+	"github.com/mospyx/data-accounting/api/handlers"
 	"log"
 )
 

@@ -1,8 +1,8 @@
 package migrate
 
 import (
-	"github.com/mospyx/data_accounting/pkg/database"
-	"github.com/mospyx/data_accounting/pkg/models"
+	"github.com/mospyx/data-accounting/pkg/database"
+	"github.com/mospyx/data-accounting/pkg/models"
 )
 
 func AutoMigrate() error {

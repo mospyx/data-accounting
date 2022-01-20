@@ -2,7 +2,7 @@ package models
 
 import (
 	"errors"
-	"github.com/mospyx/data_accounting/pkg/database"
+	"github.com/mospyx/data-accounting/pkg/database"
 	"gorm.io/gorm"
 	"log"
 	"time"

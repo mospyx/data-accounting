@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/joho/godotenv"
-	"github.com/mospyx/data_accounting/api"
-	"github.com/mospyx/data_accounting/pkg/database"
-	"github.com/mospyx/data_accounting/pkg/migrate"
+	"github.com/mospyx/data-accounting/api"
+	"github.com/mospyx/data-accounting/pkg/database"
+	"github.com/mospyx/data-accounting/pkg/migrate"
 )
 
 func main() {

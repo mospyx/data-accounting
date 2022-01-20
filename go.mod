@@ -1,4 +1,4 @@
-module github.com/mospyx/data_accounting
+module github.com/mospyx/data-accounting
 
 go 1.16
 

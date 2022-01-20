@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/mospyx/data_accounting/pkg/database"
+	"github.com/mospyx/data-accounting/pkg/database"
 	"gorm.io/gorm"
 	"time"
 )
