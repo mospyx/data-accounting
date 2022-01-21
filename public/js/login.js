@@ -22,7 +22,7 @@ FormS.addEventListener('submit', function (e) {
             localStorage.setItem("jwt", 'Bearer ' + token);
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
             if (response.data.code === 200) {
-                window.location.replace(homePage)
+                window.location.replace("http://localhost:5000/")
             }
         })
 

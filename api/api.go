@@ -4,9 +4,11 @@ import (
 	jwt "github.com/appleboy/gin-jwt/v2"
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/mospyx/data-accounting/api/handlers"
 	"log"
+	"net/http"
 )
 
 const (
@@ -30,6 +32,16 @@ func Start() error {
 	authMiddleware, err := jwt.New(handlers.JWT)
 	if err != nil {
 		return err
+	}
+
+	r.LoadHTMLGlob("./public/*.html")
+	r.Use(static.Serve("/", static.LocalFile("public", true)))
+	//r.Static("/public", "public")
+	frontend := r.Group("/")
+	{
+		frontend.GET("/login", func(c *gin.Context) {
+			c.HTML(http.StatusOK, "login.html", gin.H{})
+		})
 	}
 
 	api := r.Group("/api")
