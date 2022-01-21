@@ -36,7 +36,7 @@ func Start() error {
 
 	r.LoadHTMLGlob("./public/*.html")
 	r.Use(static.Serve("/", static.LocalFile("public", true)))
-	//r.Static("/public", "public")
+	r.Static("/public", "public")
 	frontend := r.Group("/")
 	{
 		frontend.GET("/login", func(c *gin.Context) {
