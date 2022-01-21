@@ -53,6 +53,11 @@ func Start() error {
 			auth.GET("/refresh", authMiddleware.RefreshHandler)
 		}
 
+		user := api.Group("/user")
+		{
+			user.GET("current_user", authMiddleware.MiddlewareFunc(), handlers.GetCurrentUser)
+		}
+
 		companies := api.Group("/companies")
 		{
 			companies.GET("", handlers.GetCompanies)
