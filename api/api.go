@@ -1,18 +1,19 @@
 package api
 
 import (
+	"log"
+	"net/http"
+
 	jwt "github.com/appleboy/gin-jwt/v2"
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
 	"github.com/mospyx/data-accounting/api/handlers"
-	"log"
-	"net/http"
 )
 
 const (
-	serverPort = ":5000"
+	serverPort = ":5050"
 )
 
 func Start() error {
