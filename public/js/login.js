@@ -1,4 +1,4 @@
-const homePage = 'http://localhost:5000/'
+const homePage = 'http://localhost:5050/'
 
 let FormS = document.querySelector(".form-data");
 
@@ -13,7 +13,7 @@ FormS.addEventListener('submit', function (e) {
         password: elem.querySelector('[name="password"]').value,
     }
 
-    axios.post('http://localhost:5000/api/auth/login', {
+    axios.post('http://localhost:5050/api/auth/login', {
         email: formData.email,
         password: formData.password,
     })

@@ -20,7 +20,7 @@
 
 
 async function getCurrentUser() {
-    const response = await fetch("http://localhost:5000/api/user/current_user", {
+    const response = await fetch("http://localhost:5050/api/user/current_user", {
         headers: new Headers({
             'Authorization': localStorage.getItem("jwt")
         })
