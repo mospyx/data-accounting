@@ -15,6 +15,8 @@
     <title>Dashboard - SB Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+    <script src="public/js/company.js"></script>
+    <script src="public/js/user.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
         crossorigin="anonymous"></script>
 </head>
@@ -81,7 +83,7 @@
                         <!-- Блок Companies -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseCompanies" aria-expanded="false" aria-controls="collapseCompanies">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-city"></i></div>
                             Companies
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
@@ -95,7 +97,7 @@
                         <!---->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-id-card-alt"></i></div>
                             Pages
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
@@ -170,96 +172,8 @@
                     <h1>Companies</h1>
                 </div>
                 <!-- Content -->
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <h2 class="card-title"><div id="company_name">Divit pro</div></h2>
-                            </div>
-                            <div class="card-body">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">&#127760;</span>
-                                    </div>
-                                    <span class="form-control" id="company_website">https://divit.pro/</span>
-                                </div>
-                                
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">&#128222;</span>
-                                    </div>
-                                    <span class="form-control" id="company_phone">+79129876543</span>
-                                </div>
-
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">&#9993;</span>
-                                    </div>
-                                    <span class="form-control" id="company_email">adm@divit.pro</span>
-                                </div>
-
-                               <!---- <p class="card-text"> &#128222; <span id="company_phone">+79129876543</span></p>
-                                <p class="card-text"> &#9993; <span id="company_email">adm@divit.pro</span></p> -->
-                            </div>
-                            <div class="card-footer">
-                                <a class="btn btn-primary btn-sm" href="#!">More Info</a>
-                                <a class="btn btn-primary btn-sm" href="#!">Employees</a>
-                                <a class="btn btn-primary btn-sm" href="#!">Edit</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <h2 class="card-title">Companies Two</h2>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-                            </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title">Companies Three</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                            </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                        </div>
-                    </div>
-                </div>
+                <div id="content"></div>
                 <!-- Количество карточек будет зависить от кол-ва компаний -->
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title">Companies One</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                            </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-header">
-                                <h2 class="card-title">Companies Two</h2>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-                            </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h2 class="card-title">Companies Three</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                            </div>
-                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-                        </div>
-                    </div>
-                </div>
             </main>
             <!-- Footer -->
             <footer class="py-4 bg-light mt-auto">
@@ -284,7 +198,6 @@
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
-    <script src="public/js/user.js"></script>
 </body>
 
 </html>

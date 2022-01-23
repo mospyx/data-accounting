@@ -8,6 +8,12 @@ import (
 	"github.com/mospyx/data-accounting/pkg/migrate"
 )
 
+//todo: db backup manually/auto
+//todo: logout
+//todo: generate password handler
+//todo: refresh token
+//todo: one-time token for create admin
+
 func main() {
 	if err := godotenv.Load(".env"); err != nil {
 		fmt.Println(err)
