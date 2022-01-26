@@ -50,7 +50,7 @@ func Start() error {
 		auth := api.Group("/auth")
 		{
 			auth.POST("/login", authMiddleware.LoginHandler)
-			auth.POST("/register", authMiddleware.MiddlewareFunc(), handlers.Admin(), handlers.Register)
+			auth.POST("/register", handlers.Register)
 			auth.GET("/refresh", authMiddleware.RefreshHandler)
 		}
 
