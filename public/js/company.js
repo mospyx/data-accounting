@@ -147,7 +147,7 @@ function initElements(arrID) {
         buttenInfo.setAttribute('class', 'btn btn-primary btn-sm');
         buttenInfo.setAttribute('href', '#!');
         buttenInfo = cardFooter.appendChild(buttenInfo)
-        let buttenInfoText = document.createTextNode('More Info')
+        let buttenInfoText = document.createTextNode('More info')
         buttenInfo.appendChild(buttenInfoText);
 
         let buttenEmployees = document.createElement('a')
