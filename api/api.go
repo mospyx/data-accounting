@@ -43,6 +43,9 @@ func Start() error {
 		frontend.GET("/login", func(c *gin.Context) {
 			c.HTML(http.StatusOK, "login.html", gin.H{})
 		})
+		frontend.GET("/register", func(c *gin.Context) {
+			c.HTML(http.StatusOK, "register.html", gin.H{})
+		})
 	}
 
 	api := r.Group("/api")
