@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"errors"
+	"fmt"
 	"github.com/mospyx/data-accounting/pkg/models"
 	"net/http"
 	"os"
@@ -116,17 +117,23 @@ func Register(c *gin.Context) {
 		return
 	}
 
+	fmt.Println("Check email:", req.Email)
+
 	email := models.CheckEmail(req.Email)
 	if email != true {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Email is already in use. "})
 		return
 	}
 
+	fmt.Println("Password1:", req.Password1)
+
 	pass := models.Password(req.Password1)
 	if !pass {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Your password must be 8+ characters and contain at least one uppercase, one symbol and one number digit. "})
 		return
 	}
+
+	fmt.Println("Password2:", req.Password2)
 
 	if req.Password1 != req.Password2 {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Passwords doesn't match. "})
@@ -139,6 +146,11 @@ func Register(c *gin.Context) {
 		CaptureException(c, err)
 		return
 	}
+
+	fmt.Println("FamilyName:", req.FamilyName)
+	fmt.Println("GivenName:", req.GivenName)
+	fmt.Println("Patronymic:", req.Patronymic)
+	fmt.Println("Phone:", req.Phone)
 
 	usr := models.User{
 		FamilyName: req.FamilyName,
