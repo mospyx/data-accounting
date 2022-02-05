@@ -88,9 +88,13 @@ func Login(c *gin.Context) (interface{}, error) {
 }
 
 type RegisterHandlerRequest struct {
-	Email     string `json:"email"`
-	Password1 string `json:"password_1"`
-	Password2 string `json:"password_2"`
+	FamilyName string `json:"family_name"`
+	GivenName  string `json:"given_name"`
+	Patronymic string `json:"patronymic"`
+	Phone      string `json:"phone"`
+	Email      string `json:"email"`
+	Password1  string `json:"password_1"`
+	Password2  string `json:"password_2"`
 }
 
 func Register(c *gin.Context) {
@@ -137,10 +141,14 @@ func Register(c *gin.Context) {
 	}
 
 	usr := models.User{
-		Email:    req.Email,
-		Password: hash,
-		Role:     "general",
-		Active:   false,
+		FamilyName: req.FamilyName,
+		GivenName:  req.GivenName,
+		Patronymic: req.Patronymic,
+		Phone:      req.Phone,
+		Email:      req.Email,
+		Password:   hash,
+		Role:       "general",
+		Active:     false,
 	}
 
 	hostName := os.Getenv("HOST_NAME")
