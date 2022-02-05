@@ -17,14 +17,18 @@ const (
 )
 
 type User struct {
-	ID        uint           `gorm:"primarykey"`
-	CreatedAt time.Time      `example:"2021-05-27T12:46:29+03:00"`
-	UpdatedAt time.Time      `example:"2021-05-27T12:46:29+03:00"`
-	DeletedAt gorm.DeletedAt `swaggertype:"string" example:"2021-05-27T12:46:29+03:00"`
-	Email     string         `json:"email" gorm:"unique_index;not null"`
-	Password  string         `json:"-"`
-	Role      UserRole       `json:"role"`
-	Active    bool           `json:"active"`
+	ID         uint           `gorm:"primarykey"`
+	CreatedAt  time.Time      `example:"2021-05-27T12:46:29+03:00"`
+	UpdatedAt  time.Time      `example:"2021-05-27T12:46:29+03:00"`
+	DeletedAt  gorm.DeletedAt `swaggertype:"string" example:"2021-05-27T12:46:29+03:00"`
+	FamilyName string         `json:"family_name"`
+	GivenName  string         `json:"given_name"`
+	Patronymic string         `json:"patronymic"`
+	Phone      string         `json:"phone"`
+	Email      string         `json:"email" gorm:"unique_index;not null"`
+	Password   string         `json:"-"`
+	Role       UserRole       `json:"role"`
+	Active     bool           `json:"active"`
 }
 
 func (r UserRole) IsAdmin() bool {
