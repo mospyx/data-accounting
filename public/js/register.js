@@ -9,28 +9,28 @@ FormS.addEventListener('submit', function (e) {
     let elem = e.target
 
     let formData = {
-        familyName: elem.querySelector('[name="inputFamilyName"]').value,
-        givenName: elem.querySelector('[name="inputGivenName"]').value,
-        patronymic: elem.querySelector('[name="inputPatronymic"]').value,
-        phone: elem.querySelector('[name="inputPhone"]').value,
-        email: elem.querySelector('[name="inputEmail"]').value,
-        password1: elem.querySelector('[name="password_1"]').value,
-        password2: elem.querySelector('[name="password_2"]').value,
+        family_name: elem.querySelector('[name="family_name"]').value,
+        given_name: elem.querySelector('[name="given_name"]').value,
+        patronymic: elem.querySelector('[name="patronymic"]').value,
+        phone: elem.querySelector('[name="phone"]').value,
+        email: elem.querySelector('[name="email"]').value,
+        password_1: elem.querySelector('[name="password_1"]').value,
+        password_2: elem.querySelector('[name="password_2"]').value,
     }
 
     axios.post('http://localhost:5050/api/auth/register', {
-        familyName: formData.familyName,
-        givenName: formData.givenName,
+        family_name: formData.family_name,
+        given_name: formData.given_name,
         patronymic: formData.patronymic,
         phone: formData.phone,
         email: formData.email,
-        password1: formData.password1,
-        password2: formData.password2,
+        password_1: formData.password_1,
+        password_2: formData.password_2,
 
     })
         .then(function (response) {
-            
-            if (response.data.code === 200) {
+            //TODO: Информировать о создании юзера и добавить действие
+            if (response.data.id != 0) {
                 window.location.replace(homePage)
             }
         })
